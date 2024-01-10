@@ -14,7 +14,7 @@ import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 
 public class SearchIssueRepoLambda {
-    private static final String QUAGURU_NEW = "quaguru_new";
+    private static final String QUAGURU_NEW = "quaguru_new";//
 
     @BeforeAll
     static void beforeAll(){
