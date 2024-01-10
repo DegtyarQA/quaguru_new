@@ -9,6 +9,6 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
-          java-version: '11'
+          java-version: '8'
       - uses: Xotabu4/selenoid-github-action@v2
       - run: ./gradlew clean test -Dselenide.remote=http://localhost:4444/wd/hub
