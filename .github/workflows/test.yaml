@@ -1,39 +1,46 @@
-name: Test
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+# This workflow will build a Java project with Gradle and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-gradle
 
-on: workflow_dispatch
+name: Java Automation Tests CI
+
+on: [push]
 
 jobs:
   test:
-    # где заускаем
+    # Где запускаем
     runs-on: ubuntu-latest
-    # что делаем
+    # Что делаем
     steps:
-      # выкачиваем репозиторий
+      # Выкачиваем репозиторий
       - uses: actions/checkout@v3
-      # настраиваем java
+      # Настраиваем java
       - uses: actions/setup-java@v3
         with:
-          distribution: 'zulu'
-          java-version: '8'
+          java-version: '18'
+          distribution: 'temurin'
       - uses: Xotabu4/selenoid-github-action@v2
-      # запускаем тесты
+      # Запускаем java
       - run: ./gradlew clean test -Dselenide.remote=http://localhost:4444/wd/hub
-      # скачиваем историю тестов
+      # Скачиваем историю тестов
       - uses: actions/checkout@v2
         if: always()
         continue-on-error: true
         with:
           ref: gh-pages
           path: gh-pages
-      # генерируем отчет
+      # Генерируем отчет
       - uses: simple-elf/allure-report-action@master
         if: always()
         with:
-          gh_pages: gh-pages
           allure_results: build/allure-results
+          gh_pages: gh-pages
           allure_report: allure-report
           allure_history: allure-history
-      # публикуем отчет
+      # Публикуем отчет
       - uses: peaceiris/actions-gh-pages@v2
         if: always()
         env:
