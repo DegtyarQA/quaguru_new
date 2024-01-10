@@ -29,6 +29,6 @@ public class SearchIssueRepoSelenide {
         $("#query-builder-test").setValue("quaguru_new").pressEnter();
         $("[data-testid=results-list] a").click();
         $("#issues-tab").click();
-        $("#issue_1_link").shouldBe(visible).shouldHave(text("test is1sue"));
+        $("#issue_1_link").shouldBe(visible).shouldHave(text("test issue"));
     }
 }
