@@ -7,7 +7,7 @@
 
 name: Java Automation Tests CI
 
-on: [push]
+on: workflow_dispatch
 
 jobs:
   test:
