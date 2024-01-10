@@ -43,7 +43,7 @@ public class SearchIssueRepoLambda {
         step("Проверяем наличие ишью", new Allure.ThrowableContextRunnableVoid<Allure.StepContext>() { //Это тоже самое что лямбда в шагах выше
             @Override
             public void run(Allure.StepContext context) throws Throwable {
-                $("#issue_1_link").shouldBe(visible).shouldHave(text("test issue"));
+                $("#issue_1_link").shouldBe(visible).shouldHave(text("test iss1ue"));
             }
         });
     }
