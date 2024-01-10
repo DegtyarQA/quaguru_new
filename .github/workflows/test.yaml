@@ -10,4 +10,6 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: '11'
+      - name: Start selenoid
+        uses: Xotabu4/selenoid-github-action@v2
       - run: ./gradlew clean test
